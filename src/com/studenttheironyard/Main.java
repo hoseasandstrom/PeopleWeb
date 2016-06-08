@@ -29,7 +29,7 @@ public class Main {
                     String username = session.attribute("username");
 
                     String idStr = request.queryParams("userId");
-                    int userId = -1;
+                    int userId = 0;
                     if (idStr != null) {
                         userId = Integer.valueOf(idStr);
                     }
