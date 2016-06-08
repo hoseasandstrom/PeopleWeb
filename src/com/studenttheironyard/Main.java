@@ -1,6 +1,7 @@
 package com.studenttheironyard;
 
 import jodd.json.JsonSerializer;
+import jodd.util.MathUtil;
 import spark.ModelAndView;
 import spark.Session;
 import spark.Spark;
@@ -15,8 +16,8 @@ import java.util.HashMap;
 import java.util.Scanner;
 
 public class Main {
-    static HashMap<String, ArrayList<User>> users = new HashMap<>();
-    //static ArrayList<Message> messages = new ArrayList<>();
+    //static HashMap<String, User> users = new HashMap<>();
+    static ArrayList<User> users = new ArrayList<>();
 
     public static void main(String[] args) {
         Spark.init();
@@ -31,9 +32,17 @@ public class Main {
                     if (idStr != null) {
                         userId = Integer.valueOf(idStr);
                     }
-                    HashMap m = new HashMap();
-                    m.put("username", username);
-                    return new ModelAndView(m, "home.html");
+
+                    ArrayList<User> subset = new ArrayList<User>();
+                    for (User usr : users) {
+                        if (usr.userId == userId) {
+                            subset.add(usr);
+                        }
+                    }
+
+                    ArrayList arr = new ArrayList();
+                    arr.add(username);
+                    return new ModelAndView(arr, "home.html");
                 },
                 new MustacheTemplateEngine()
         );
