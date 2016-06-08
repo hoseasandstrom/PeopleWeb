@@ -12,11 +12,12 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Scanner;
 
 public class Main {
-    //static HashMap<String, User> users = new HashMap<>();
+    static HashMap<String, String> userMap = new HashMap<>();
     static ArrayList<User> users = new ArrayList<>();
 
     public static void main(String[] args) {
@@ -42,6 +43,14 @@ public class Main {
 
                     ArrayList arr = new ArrayList();
                     arr.add(username);
+
+                    ArrayList<String> namesArr = new ArrayList<>(Arrays.asList(username));
+                    ArrayList<String> pair;
+                    while (namesArr.size() > 0) {
+                        pair = new ArrayList<>(namesArr.subList(0, 1));
+                        namesArr = new ArrayList<>(namesArr.subList(2, namesArr.size()));
+                        userMap.put(pair.get(0), pair.get(1));
+                    }
                     return new ModelAndView(arr, "home.html");
                 },
                 new MustacheTemplateEngine()
