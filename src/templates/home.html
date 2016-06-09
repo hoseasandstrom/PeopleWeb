@@ -1,13 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>User List</title>
 </head>
 <body>
-{{#username}}
-{{username}}
-{{/username}}
+
+{{#userlist}}
+
+{{firstName}}  {{lastName}}<button type="button" onclick= <a href="/user?id={{id}}"></a>View Profile</button>
+    <br>
+<button type="button" onclick= <a href="/?offset={{offsetDown}}">previous</a></button>
+<button type="button" onclick= <a href="/?offset={{offsetUp}}">next</a></button>
+
+{{/userlist}}
 
 </body>
 </html>
