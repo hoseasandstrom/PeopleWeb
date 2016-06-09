@@ -22,9 +22,9 @@ public class Main {
                 "/",
                 (request, response) -> {
                     int offset = 0;
-                    String offStr = request.queryParams("offset");
-                    if (offStr != null) {
-                        offset = Integer.valueOf(offStr);
+                    String offsetStr = request.queryParams("offset");
+                    if (offsetStr != null) {
+                        offset = Integer.valueOf(offsetStr);
                     }
 
                     ArrayList tempList = new ArrayList<>(userList.subList(offset, offset + 20));
