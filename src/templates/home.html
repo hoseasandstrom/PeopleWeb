@@ -10,8 +10,13 @@
 
 {{firstName}}  {{lastName}}<button type="button" onclick= <a href="/user?id={{id}}"></a>View Profile</button>
     <br>
-<button type="button" onclick= <a href="/?offset={{offsetDown}}">previous</a></button>
-<button type="button" onclick= <a href="/?offset={{offsetUp}}">next</a></button>
+{{#showPrevious}}
+<button type="button" onclick= <a href="/?offset={{offsetPrevious}}">previous</a></button>
+{{/showPrevious}}
+&nbsp;
+{{#showNext}}
+<button type="button" onclick= <a href="/?offset={{offsetNext}}">next</a></button>
+{{/showNext}}
 
 {{/userlist}}
 

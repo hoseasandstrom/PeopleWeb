@@ -14,7 +14,7 @@ import java.util.Scanner;
 public class Main {
     //static HashMap<String, String> userMap = new HashMap<>();
     static ArrayList<User> userList = new ArrayList<>();
-
+    static final int LISTPARAM =  20;
     public static void main(String[] args) throws FileNotFoundException {
         readPeopleFile();
         Spark.init();
@@ -27,12 +27,14 @@ public class Main {
                         offset = Integer.valueOf(offsetStr);
                     }
 
-                    ArrayList tempList = new ArrayList<>(userList.subList(offset, offset + 20));
+                    ArrayList tempList = new ArrayList<>(userList.subList(offset, offset + LISTPARAM));
 
                     HashMap map = new HashMap();
                     map.put("users", tempList);
-                    map.put("offsetUp", offset + 20);
-                    map.put("offsetDown", offset - 20);
+                    map.put("offsetNext", offset + LISTPARAM);
+                    map.put("offsetPrevious", offset - LISTPARAM);
+                    map.put("showPrevious" ,offset > LISTPARAM);
+                    map.put("showNext", offset + LISTPARAM < userList.size());
                     return new ModelAndView(map, "home.html");
                 },
                 new MustacheTemplateEngine()
